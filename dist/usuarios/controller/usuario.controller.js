@@ -14,9 +14,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsuarioController = void 0;
 const common_1 = require("@nestjs/common");
-const usuario_service_1 = require("../services/usuario.service");
-const usuario_entity_1 = require("../entities/usuario.entity");
+const swagger_1 = require("@nestjs/swagger");
 const jwt_auth_guard_1 = require("../../auth/guard/jwt-auth.guard");
+const usuario_entity_1 = require("../entities/usuario.entity");
+const usuario_service_1 = require("../services/usuario.service");
 let UsuarioController = class UsuarioController {
     usuarioService;
     constructor(usuarioService) {
@@ -29,7 +30,7 @@ let UsuarioController = class UsuarioController {
         return this.usuarioService.findById(id);
     }
     async create(usuario) {
-        return this.usuarioService.create(usuario);
+        return await this.usuarioService.create(usuario);
     }
     async update(usuario) {
         return this.usuarioService.update(usuario);
@@ -54,8 +55,8 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsuarioController.prototype, "findById", null);
 __decorate([
-    (0, common_1.Post)('/cadastrar'),
     (0, common_1.HttpCode)(common_1.HttpStatus.CREATED),
+    (0, common_1.Post)('/cadastrar'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [usuario_entity_1.Usuario]),
@@ -71,7 +72,9 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsuarioController.prototype, "update", null);
 exports.UsuarioController = UsuarioController = __decorate([
+    (0, swagger_1.ApiTags)('Usuario'),
     (0, common_1.Controller)("/usuarios"),
+    (0, swagger_1.ApiBearerAuth)(),
     __metadata("design:paramtypes", [usuario_service_1.UsuarioService])
 ], UsuarioController);
 //# sourceMappingURL=usuario.controller.js.map

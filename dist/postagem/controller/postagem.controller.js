@@ -14,9 +14,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostagemController = void 0;
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
+const jwt_auth_guard_1 = require("../../auth/guard/jwt-auth.guard");
 const postagem_entity_1 = require("../entities/postagem.entity");
 const postagem_service_1 = require("../services/postagem.service");
-const jwt_auth_guard_1 = require("../../auth/guard/jwt-auth.guard");
 let PostagemController = class PostagemController {
     postagemService;
     constructor(postagemService) {
@@ -28,8 +29,8 @@ let PostagemController = class PostagemController {
     findById(id) {
         return this.postagemService.findById(id);
     }
-    findByAllTitulo(titulo) {
-        return this.postagemService.findAllByTitulo(titulo);
+    findByTitulo(titulo) {
+        return this.postagemService.findByTitulo(titulo);
     }
     create(postagem) {
         return this.postagemService.create(postagem);
@@ -64,7 +65,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], PostagemController.prototype, "findByAllTitulo", null);
+], PostagemController.prototype, "findByTitulo", null);
 __decorate([
     (0, common_1.Post)(),
     (0, common_1.HttpCode)(common_1.HttpStatus.CREATED),
@@ -90,8 +91,10 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PostagemController.prototype, "delete", null);
 exports.PostagemController = PostagemController = __decorate([
+    (0, swagger_1.ApiTags)('Postagem'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Controller)("/postagens"),
+    (0, swagger_1.ApiBearerAuth)(),
     __metadata("design:paramtypes", [postagem_service_1.PostagemService])
 ], PostagemController);
 //# sourceMappingURL=postagem.controller.js.map

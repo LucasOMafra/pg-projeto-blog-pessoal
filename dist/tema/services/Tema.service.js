@@ -42,7 +42,7 @@ let TemaService = class TemaService {
             throw new common_1.HttpException('Tema não encontrado!', common_1.HttpStatus.NOT_FOUND);
         return tema;
     }
-    async findAllByDescricao(descricao) {
+    async findByDescricao(descricao) {
         return await this.temaRepository.find({
             where: {
                 descricao: (0, typeorm_2.ILike)(`%${descricao}%`),

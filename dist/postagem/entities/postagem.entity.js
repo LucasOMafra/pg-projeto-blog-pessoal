@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Postagem = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const typeorm_1 = require("typeorm");
 const tema_entity_1 = require("../../tema/entities/tema.entity");
@@ -24,36 +25,42 @@ let Postagem = class Postagem {
 };
 exports.Postagem = Postagem;
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Postagem.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, typeorm_1.Column)({ length: 100, nullable: false }),
     __metadata("design:type", String)
 ], Postagem.prototype, "titulo", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, typeorm_1.Column)({ length: 1000, nullable: false }),
     __metadata("design:type", String)
 ], Postagem.prototype, "texto", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
 ], Postagem.prototype, "data", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => tema_entity_1.Tema }),
     (0, typeorm_1.ManyToOne)(() => tema_entity_1.Tema, (tema) => tema.postagem, {
-        onDelete: 'CASCADE',
+        onDelete: "CASCADE"
     }),
     __metadata("design:type", tema_entity_1.Tema)
 ], Postagem.prototype, "tema", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => usuario_entity_1.Usuario }),
     (0, typeorm_1.ManyToOne)(() => usuario_entity_1.Usuario, (usuario) => usuario.postagem, {
-        onDelete: 'CASCADE'
+        onDelete: "CASCADE"
     }),
     __metadata("design:type", usuario_entity_1.Usuario)
 ], Postagem.prototype, "usuario", void 0);
 exports.Postagem = Postagem = __decorate([
-    (0, typeorm_1.Entity)({ name: 'tb_postagens' })
+    (0, typeorm_1.Entity)({ name: "tb_postagens" })
 ], Postagem);
 //# sourceMappingURL=postagem.entity.js.map

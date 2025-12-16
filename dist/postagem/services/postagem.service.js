@@ -47,7 +47,7 @@ let PostagemService = class PostagemService {
             throw new common_1.HttpException('Postagem não encontrada!', common_1.HttpStatus.NOT_FOUND);
         return postagem;
     }
-    async findAllByTitulo(titulo) {
+    async findByTitulo(titulo) {
         return await this.postagemRepository.find({
             where: {
                 titulo: (0, typeorm_2.ILike)(`%${titulo}%`),

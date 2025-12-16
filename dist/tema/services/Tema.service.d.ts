@@ -5,7 +5,7 @@ export declare class TemaService {
     constructor(temaRepository: Repository<Tema>);
     findAll(): Promise<Tema[]>;
     findById(id: number): Promise<Tema>;
-    findAllByDescricao(descricao: string): Promise<Tema[]>;
+    findByDescricao(descricao: string): Promise<Tema[]>;
     create(Tema: Tema): Promise<Tema>;
     update(tema: Tema): Promise<Tema>;
     delete(id: number): Promise<DeleteResult>;

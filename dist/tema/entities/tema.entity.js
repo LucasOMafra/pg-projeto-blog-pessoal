@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Tema = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const typeorm_1 = require("typeorm");
 const postagem_entity_1 = require("../../postagem/entities/postagem.entity");
@@ -21,14 +22,17 @@ let Tema = class Tema {
 exports.Tema = Tema;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, swagger_1.ApiProperty)(),
     __metadata("design:type", Number)
 ], Tema.prototype, "id", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, typeorm_1.Column)({ length: 255, nullable: false }),
+    (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
 ], Tema.prototype, "descricao", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, typeorm_1.OneToMany)(() => postagem_entity_1.Postagem, (postagem) => postagem.tema),
     __metadata("design:type", Array)
 ], Tema.prototype, "postagem", void 0);

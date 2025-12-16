@@ -8,7 +8,7 @@ export declare class PostagemService {
     constructor(postagemRepository: Repository<Postagem>, temaService: TemaService);
     findAll(): Promise<Postagem[]>;
     findById(id: number): Promise<Postagem>;
-    findAllByTitulo(titulo: string): Promise<Postagem[]>;
+    findByTitulo(titulo: string): Promise<Postagem[]>;
     create(postagem: Postagem): Promise<Postagem>;
     update(postagem: Postagem): Promise<Postagem>;
     delete(id: number): Promise<DeleteResult>;

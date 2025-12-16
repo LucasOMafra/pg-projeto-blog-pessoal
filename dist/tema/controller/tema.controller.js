@@ -13,10 +13,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TemaController = void 0;
-const tema_service_1 = require("./../services/tema.service");
-const tema_entity_1 = require("../entities/tema.entity");
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
 const jwt_auth_guard_1 = require("../../auth/guard/jwt-auth.guard");
+const tema_entity_1 = require("../entities/tema.entity");
+const tema_service_1 = require("../services/tema.service");
 let TemaController = class TemaController {
     temaService;
     constructor(temaService) {
@@ -28,14 +29,14 @@ let TemaController = class TemaController {
     findById(id) {
         return this.temaService.findById(id);
     }
-    findByAllTitulo(descricao) {
-        return this.temaService.findAllByDescricao(descricao);
+    findBydescricao(descricao) {
+        return this.temaService.findByDescricao(descricao);
     }
-    create(tema) {
-        return this.temaService.create(tema);
+    create(Tema) {
+        return this.temaService.create(Tema);
     }
-    update(tema) {
-        return this.temaService.update(tema);
+    update(Tema) {
+        return this.temaService.update(Tema);
     }
     delete(id) {
         return this.temaService.delete(id);
@@ -64,7 +65,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], TemaController.prototype, "findByAllTitulo", null);
+], TemaController.prototype, "findBydescricao", null);
 __decorate([
     (0, common_1.Post)(),
     (0, common_1.HttpCode)(common_1.HttpStatus.CREATED),
@@ -90,8 +91,10 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], TemaController.prototype, "delete", null);
 exports.TemaController = TemaController = __decorate([
+    (0, swagger_1.ApiTags)('Tema'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Controller)("/temas"),
+    (0, swagger_1.ApiBearerAuth)(),
     __metadata("design:paramtypes", [tema_service_1.TemaService])
 ], TemaController);
 //# sourceMappingURL=tema.controller.js.map

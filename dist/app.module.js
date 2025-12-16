@@ -16,6 +16,7 @@ const tema_module_1 = require("./tema/tema.module");
 const auth_module_1 = require("./auth/auth.module");
 const usuario_entity_1 = require("./usuarios/entities/usuario.entity");
 const usuario_module_1 = require("./usuarios/usuario.module");
+const app_controller_1 = require("./app.controller");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -37,7 +38,7 @@ exports.AppModule = AppModule = __decorate([
             auth_module_1.AuthModule,
             usuario_module_1.UsuarioModule
         ],
-        controllers: [],
+        controllers: [app_controller_1.AppController],
         providers: [],
     })
 ], AppModule);
