@@ -26,13 +26,22 @@ let PostagemService = class PostagemService {
         this.temaService = temaService;
     }
     async findAll() {
-        return await this.postagemRepository.find();
+        return await this.postagemRepository.find({
+            relations: {
+                tema: true,
+                usuario: true
+            }
+        });
     }
     async findById(id) {
         const postagem = await this.postagemRepository.findOne({
             where: {
-                id,
+                id
             },
+            relations: {
+                tema: true,
+                usuario: true
+            }
         });
         if (!postagem)
             throw new common_1.HttpException('Postagem não encontrada!', common_1.HttpStatus.NOT_FOUND);
@@ -43,6 +52,10 @@ let PostagemService = class PostagemService {
             where: {
                 titulo: (0, typeorm_2.ILike)(`%${titulo}%`),
             },
+            relations: {
+                tema: true,
+                usuario: true,
+            }
         });
     }
     async create(postagem) {
