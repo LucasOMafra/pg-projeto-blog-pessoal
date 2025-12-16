@@ -68,5 +68,4 @@ export class UsuarioService {
         return await this.usuarioRepository.save(usuario);
 
     }
-
 }

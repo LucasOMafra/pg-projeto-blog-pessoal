@@ -16,6 +16,7 @@ exports.UsuarioController = void 0;
 const common_1 = require("@nestjs/common");
 const usuario_service_1 = require("../services/usuario.service");
 const usuario_entity_1 = require("../entities/usuario.entity");
+const jwt_auth_guard_1 = require("../../auth/guard/jwt-auth.guard");
 let UsuarioController = class UsuarioController {
     usuarioService;
     constructor(usuarioService) {
@@ -36,6 +37,7 @@ let UsuarioController = class UsuarioController {
 };
 exports.UsuarioController = UsuarioController;
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Get)('/all'),
     (0, common_1.HttpCode)(common_1.HttpStatus.OK),
     __metadata("design:type", Function),
@@ -43,6 +45,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsuarioController.prototype, "findAll", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Get)('/:id'),
     (0, common_1.HttpCode)(common_1.HttpStatus.OK),
     __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
@@ -59,6 +62,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsuarioController.prototype, "create", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Put)('/atualizar'),
     (0, common_1.HttpCode)(common_1.HttpStatus.OK),
     __param(0, (0, common_1.Body)()),
