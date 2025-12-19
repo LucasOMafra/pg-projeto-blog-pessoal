@@ -14,24 +14,18 @@ const tema_module_1 = require("./tema/tema.module");
 const auth_module_1 = require("./auth/auth.module");
 const usuario_module_1 = require("./usuarios/usuario.module");
 const app_controller_1 = require("./app.controller");
-const postagem_entity_1 = require("./postagem/entities/postagem.entity");
-const tema_entity_1 = require("./tema/entities/tema.entity");
-const usuario_entity_1 = require("./usuarios/entities/usuario.entity");
+const config_1 = require("@nestjs/config");
+const prod_service_1 = require("./data/services/prod.service");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            typeorm_1.TypeOrmModule.forRoot({
-                type: 'mysql',
-                host: 'localhost',
-                port: 3306,
-                username: 'root',
-                password: 'root',
-                database: 'db_blogpessoal',
-                entities: [postagem_entity_1.Postagem, tema_entity_1.Tema, usuario_entity_1.Usuario],
-                synchronize: true,
+            config_1.ConfigModule.forRoot(),
+            typeorm_1.TypeOrmModule.forRootAsync({
+                useClass: prod_service_1.ProdService,
+                imports: [config_1.ConfigModule],
             }),
             postagem_module_1.PostagemModule,
             tema_module_1.TemaModule,

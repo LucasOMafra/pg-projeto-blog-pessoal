@@ -12,7 +12,7 @@ let ProdService = class ProdService {
     createTypeOrmOptions() {
         return {
             type: 'postgres',
-            url: process.env.DATABASE_URL,
+            url: 'postgresql://db_blogpessoal_1nw5_user:z659PN5EX1y2GJRvckRMy00ielaHBXjU@dpg-d52attnpm1nc73ek958g-a.oregon-postgres.render.com/db_blogpessoal_1nw5',
             logging: false,
             dropSchema: false,
             ssl: {
