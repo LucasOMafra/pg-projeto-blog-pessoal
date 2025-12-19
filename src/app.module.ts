@@ -1,16 +1,16 @@
-import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Postagem } from './postagem/entities/postagem.entity';
+import { Module } from '@nestjs/common';
 import { PostagemModule } from './postagem/postagem.module';
-import { Tema } from './tema/entities/tema.entity';
 import { TemaModule } from './tema/tema.module';
 import { AuthModule } from './auth/auth.module';
-import { Usuario } from './usuarios/entities/usuario.entity';
 import { UsuarioModule } from './usuarios/usuario.module';
 import { AppController } from './app.controller';
+import { Postagem } from './postagem/entities/postagem.entity';
+import { Tema } from './tema/entities/tema.entity';
+import { Usuario } from './usuarios/entities/usuario.entity';
 
 @Module({
-  imports: [
+  imports: [  // Configurando o TypeORM
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',

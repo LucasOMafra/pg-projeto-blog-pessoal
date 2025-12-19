@@ -7,16 +7,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
-const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const postagem_entity_1 = require("./postagem/entities/postagem.entity");
+const common_1 = require("@nestjs/common");
 const postagem_module_1 = require("./postagem/postagem.module");
-const tema_entity_1 = require("./tema/entities/tema.entity");
 const tema_module_1 = require("./tema/tema.module");
 const auth_module_1 = require("./auth/auth.module");
-const usuario_entity_1 = require("./usuarios/entities/usuario.entity");
 const usuario_module_1 = require("./usuarios/usuario.module");
 const app_controller_1 = require("./app.controller");
+const postagem_entity_1 = require("./postagem/entities/postagem.entity");
+const tema_entity_1 = require("./tema/entities/tema.entity");
+const usuario_entity_1 = require("./usuarios/entities/usuario.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
